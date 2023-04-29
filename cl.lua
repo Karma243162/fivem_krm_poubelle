@@ -26,12 +26,20 @@ Citizen.CreateThread(function()
         Citizen.Wait(5)
 
         local pedCoords = GetEntityCoords(PlayerPedId())
-        local objectId =GetClosestObjectOfType(pedCoords, 3.0, GetHashKey("prop_ld_rub_binbag_01"), false)
+        local objectId =GetClosestObjectOfType(pedCoords, Config.Distance, Config.props, false)
 
   if DoesEntityExist(objectId) then
 ESX.ShowHelpNotification('Appuyer sur ~g~E ~w~pour fouiller la poubelle')
-        end
+if IsControlJustPressed(1, 51) then
+       RequestAnimDict("missfbi4prepp1")
+            while not HasAnimDictLoaded("missfbi4prepp1") do  
+               Wait(1)
+            end
+            TaskPlayAnim(GetPlayerPed(-1), "missfbi4prepp1", "_idle_garbage_man", 1.0, -1.0, 5000, 0, 1, true, true, true) 
+          end 
 
+        end
+    
 
     end
 end)
