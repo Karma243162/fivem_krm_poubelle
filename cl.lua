@@ -21,6 +21,12 @@ RegisterCommand('spawnpoubelle', function(source, args, rawCommand)
 
 end, false)
 
+
+for i , pos in ipairs(Config.position) do
+    local object = "prop_ld_rub_binbag_01"
+    CreateObject(object, pos.x, pos.y, pos.z, false, false, true)
+end 
+
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(5)
@@ -31,11 +37,11 @@ Citizen.CreateThread(function()
   if DoesEntityExist(objectId) then
 ESX.ShowHelpNotification('Appuyer sur ~g~E ~w~pour fouiller la poubelle')
 if IsControlJustPressed(1, 51) then
-       RequestAnimDict("missfbi4prepp1")
+--[[        RequestAnimDict("missfbi4prepp1")
             while not HasAnimDictLoaded("missfbi4prepp1") do  
                Wait(1)
             end
-            TaskPlayAnim(GetPlayerPed(-1), "missfbi4prepp1", "_idle_garbage_man", 1.0, -1.0, 5000, 0, 1, true, true, true) 
+            TaskPlayAnim(GetPlayerPed(-1), "missfbi4prepp1", "_idle_garbage_man", 1.0, -1.0, 5000, 0, 1, true, true, true) ]] 
           end 
 
         end
