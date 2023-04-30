@@ -30,10 +30,9 @@ end
 
 function PoubelleOpen() 
   for i , pos in ipairs(Config.position) do
-      local object2 = "prop_bin_07d"
-      CreateObject(object2, pos.x, pos.y, pos.z, false, false, true)
-        FreezeEntityPosition(object2, true)
-  end 
+      local object2 = Config.props2
+      CreateObject(object2, pos.x, pos.y, pos.z, false, false, true)  
+    end 
 end
 
 Citizen.CreateThread(function()
@@ -44,23 +43,24 @@ Citizen.CreateThread(function()
         local objectId =GetClosestObjectOfType(pedCoords, Config.Distance, Config.props, false)
         local objectId2 =GetClosestObjectOfType(pedCoords, Config.Distance, Config.props2, false)
  
-        if DoesEntityExist(objectId) then
+        if DoesEntityExist(objectId)then
         FreezeEntityPosition(objectId, true)
 ESX.ShowHelpNotification('Appuyer sur ~g~E ~w~pour fouiller la poubelle')
 if IsControlJustPressed(1, 51) then
   Wait(2000)
-  ESX.ShowNotification("Vous venez de trouver ~g~ x3 ~w~ bière !")
+  TriggerServerEvent("giveitem:poubelle")
+--[[   ESX.ShowNotification("Vous venez de trouver ~g~ x3 ~w~ bière !") ]]
   DeleteObject(objectId)
   PoubelleOpen() 
 
- 
 
 
---[[        RequestAnimDict("missfbi4prepp1")
-            while not HasAnimDictLoaded("missfbi4prepp1") do  
+
+--[[       RequestAnimDict("exile_2_int-21")
+            while not HasAnimDictLoaded("exile_2_int-21") do  
                Wait(1)
             end
-            TaskPlayAnim(GetPlayerPed(-1), "missfbi4prepp1", "_idle_garbage_man", 1.0, -1.0, 5000, 0, 1, true, true, true) ]] 
+            TaskPlayAnim(GetPlayerPed(-1), "exile_2_int-21", "prop_cs_rub_binbag_01-21", 1.0, -1.0, 5000, 0, 1, true, true, true) ]] 
           end 
 
         end
